@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Grocery.App.Views
 {
-    internal class RegisterVIew
+    public partial class RegisterView : ContentPage
     {
+        public RegisterView(RegisterViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = viewModel;
+        }
     }
 }

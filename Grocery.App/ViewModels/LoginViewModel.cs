@@ -24,6 +24,13 @@ namespace Grocery.App.ViewModels
         { //_authService = App.Services.GetServices<IAuthService>().FirstOrDefault();
             _authService = authService;
             _global = global;
+            _registerView = RegisterView;
+        }
+
+        [RelayCommand]
+        public async Task GoToRegisterPage()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(_registerView);
         }
 
         [RelayCommand]
