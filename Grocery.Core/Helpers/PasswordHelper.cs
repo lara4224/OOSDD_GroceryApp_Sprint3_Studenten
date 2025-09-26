@@ -23,5 +23,20 @@ namespace Grocery.Core.Helpers
 
             return CryptographicOperations.FixedTimeEquals(inputHash, hash);
         }
+
+        public static bool ValidatePassWordComplexity(string password)
+        {
+            if (password.Length < 6 || password.Length > 255) return false;
+
+            if (!password.Any(char.IsDigit)) return false;
+
+            if (!password.Any(char.IsLower) || !password.Any(char.IsUpper)) return false;
+
+            if (!password.Any(ch => char.IsSymbol(ch) || char.IsPunctuation(ch))) return false;
+
+            if (password.Any(char.IsWhiteSpace)) return false;
+
+            return true;
+        }
     }
 }
