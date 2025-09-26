@@ -1,14 +1,15 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Grocery.App.Views;
+using Grocery.Core.Exceptions;
+using Grocery.Core.Interfaces.Services;
+using Grocery.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using Grocery.Core.Interfaces.Services;
-using CommunityToolkit.Mvvm.Input;
-using Grocery.Core.Models;
-using Grocery.Core.Exceptions;
-using Grocery.App.Views;
+using System.Windows.Input;
 
 
 namespace Grocery.App.ViewModels
@@ -30,10 +31,13 @@ namespace Grocery.App.ViewModels
         [ObservableProperty]
         private string errorMessage = "";
 
+        public ICommand CancelCommand { get; }
+
         public RegisterViewModel(IAuthService authService, GlobalViewModel global)
         {
             _authService = authService;
             _global = global;
+            CancelCommand = new RelayCommand(OnCancel);
         }
 
         [RelayCommand]
@@ -75,6 +79,18 @@ namespace Grocery.App.ViewModels
             catch (Exception _)
             {
                 ErrorMessage = "Registratie niet geslaagd.";
+            }
+        }
+
+        private async void OnCancel()
+        {
+            if (Application.Current.MainPage is NavigationPage navPage)
+            {
+                await navPage.PopAsync();
+            }
+            else if (Application.Current.MainPage?.Navigation != null)
+            {
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
         }
 
