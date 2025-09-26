@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Grocery.Core.Exceptions
 {
-    internal class UsedEmailException
+    public class UsedEmailException : Exception
     {
+        public UsedEmailException() : base() { }
+        public UsedEmailException(string message) : base(message) { }
+        public UsedEmailException(string message, Exception inner) : base(message, inner) { }
     }
 }
