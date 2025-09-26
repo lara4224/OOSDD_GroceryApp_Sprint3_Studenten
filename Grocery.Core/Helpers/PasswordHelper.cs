@@ -24,7 +24,7 @@ namespace Grocery.Core.Helpers
             return CryptographicOperations.FixedTimeEquals(inputHash, hash);
         }
 
-        public static bool ValidatePassWordComplexity(string password)
+        public static bool ValidatePasswordComplexity(string password)
         {
             if (password.Length < 6 || password.Length > 255) return false;
 

@@ -70,7 +70,7 @@ namespace Grocery.App.ViewModels
             }
             catch (InvalidPasswordException _)
             {
-                ErrorMessage = "Wachtwoord moet minimaal 6 tekens bevatten, waaronder een hoofdletter een cijfer en speciaal teken."
+                ErrorMessage = "Wachtwoord moet minimaal 6 tekens bevatten, waaronder een hoofdletter een cijfer en speciaal teken.";
             }
             catch (Exception _)
             {
