@@ -50,7 +50,7 @@ namespace Grocery.App.ViewModels
             if (string.IsNullOrWhiteSpace(Password))
                 ErrorMessage += "Vul alle verplichte velden in. ";
 
-            if (ErrorMessage != "'')
+            if (ErrorMessage != "")
             return;
 
             try
